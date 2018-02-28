@@ -65,7 +65,7 @@ export async function validatePrivateKey(keyPath: string): Promise<void> {
   const f = await fsReadFile(keyPath, { encoding: 'utf8' });
   const lines = f.split('\n');
 
-  if (!lines[0].match(/^\-{5}BEGIN [R|D]SA PRIVATE KEY\-{5}$/)) {
+  if (!lines[0].trim().match(/^\-{5}BEGIN [R|D]SA PRIVATE KEY\-{5}$/)) {
     throw ERROR_SSH_INVALID_PRIVKEY;
   }
 }
